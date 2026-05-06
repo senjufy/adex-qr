@@ -34,7 +34,7 @@
     <nav class="nav">
         <div class="container">
             <a class="brand" href="{{ route('documents.index') }}">
-                <img src="{{ asset('public/navLogo.webp') }}" alt="QR Manager">
+                <img src="{{ asset('navLogo.webp') }}" alt="QR Manager">
             </a>
             <a href="{{ route('documents.index') }}">Documents</a>
             <a href="{{ route('documents.create') }}">Add Document</a>

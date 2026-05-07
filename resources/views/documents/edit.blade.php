@@ -16,6 +16,18 @@
             </div>
 
             <div class="mb-2">
+                <label for="sop_number">SOP Number</label>
+                <input id="sop_number" name="sop_number" type="text" value="{{ old('sop_number', $document->sop_number) }}" required>
+                @error('sop_number')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="mb-2">
+                <label for="project_name">Project Name</label>
+                <input id="project_name" name="project_name" type="text" value="{{ old('project_name', $document->project_name) }}" required>
+                @error('project_name')<div class="error">{{ $message }}</div>@enderror
+            </div>
+
+            <div class="mb-2">
                 <label for="description">Description (optional)</label>
                 <textarea id="description" name="description" rows="4">{{ old('description', $document->description) }}</textarea>
                 @error('description')<div class="error">{{ $message }}</div>@enderror

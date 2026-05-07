@@ -14,8 +14,9 @@
             <thead>
                 <tr>
                     <th>QR</th>
-                    <th>Slug</th>
                     <th>Title</th>
+                    <th>SOP Number</th>
+                    <th>Project Name</th>
                     <th>Current File</th>
                     <th>Revisions</th>
                     <th>Actions</th>
@@ -32,8 +33,9 @@
                                 height="80"
                             >
                         </td>
-                        <td><strong>{{ $document->slug }}</strong></td>
                         <td>{{ $document->title }}</td>
+                        <td>{{ $document->sop_number }}</td>
+                        <td>{{ $document->project_name }}</td>
                         <td>
                             <div>{{ number_format($document->current_file_size / 1024, 1) }} KB</div>
                             <div class="muted">{{ $document->current_mime_type }}</div>
@@ -54,7 +56,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6">No documents yet.</td>
+                        <td colspan="8">No documents yet.</td>
                     </tr>
                 @endforelse
             </tbody>

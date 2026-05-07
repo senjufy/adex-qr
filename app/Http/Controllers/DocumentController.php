@@ -31,6 +31,8 @@ class DocumentController extends Controller
     {
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
+            'sop_number' => ['required', 'string', 'max:255'],
+            'project_name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'pdf' => ['required', 'file', 'mimes:pdf', 'max:20480'],
         ]);
@@ -45,6 +47,8 @@ class DocumentController extends Controller
             $document = Document::create([
                 'slug' => $slug,
                 'title' => $validated['title'],
+                'sop_number' => $validated['sop_number'],
+                'project_name' => $validated['project_name'],
                 'description' => $validated['description'] ?? null,
                 'current_file_path' => $filePath,
                 'current_mime_type' => $file->getMimeType() ?: 'application/pdf',
@@ -79,12 +83,16 @@ class DocumentController extends Controller
     {
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
+            'sop_number' => ['required', 'string', 'max:255'],
+            'project_name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'pdf' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
         ]);
 
         DB::transaction(function () use ($document, $validated, $request) {
             $document->title = $validated['title'];
+            $document->sop_number = $validated['sop_number'];
+            $document->project_name = $validated['project_name'];
             $document->description = $validated['description'] ?? null;
 
             if ($request->hasFile('pdf')) {

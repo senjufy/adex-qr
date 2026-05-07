@@ -45,6 +45,8 @@ This document is the source of truth for the app's behavior, data structure, and
 | id | integer, auto-increment | Internal primary key |
 | slug | string, unique | Permanent public identifier used in routes and QR codes |
 | title | string | Human-readable document name |
+| sop_number | string, nullable | SOP identifier shown in admin and print labels |
+| project_name | string, nullable | Project/customer name shown in admin and print labels |
 | description | text, nullable | Optional admin notes or customer context |
 | current_file_path | string | Stored server path to the active PDF |
 | current_mime_type | string | MIME type used for browser handling |

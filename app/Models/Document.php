@@ -12,6 +12,8 @@ class Document extends Model
     protected $fillable = [
         'slug',
         'title',
+        'sop_number',
+        'project_name',
         'description',
         'current_file_path',
         'current_mime_type',

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document QR Print</title>
+    <title>Project QR Print</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 1rem; color: #111; }
         .toolbar { margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; }
@@ -23,33 +23,32 @@
 </head>
 <body>
     <div class="toolbar">
-        <a href="{{ route('documents.index') }}" class="btn">Back to Documents</a>
+        <a href="{{ route('projects.index') }}" class="btn">Back to Projects</a>
         <button type="button" class="btn" onclick="window.print()">Print Labels</button>
     </div>
 
     <div class="grid">
-        @foreach ($documents as $document)
+        @foreach ($projects as $project)
             <div class="label">
                 <div class="qr-pair">
                     <div class="qr-block">
                         <img
-                            src="{{ route('documents.qr', ['document' => $document->id, 'size' => 240]) }}"
-                            alt="QR {{ $document->slug }}"
+                            src="{{ route('projects.qr', ['project' => $project->id, 'size' => 240]) }}"
+                            alt="QR {{ $project->slug }}"
                             width="200"
                             height="200"
                         >
                         <div class="meta">
-                            <div style="font-size: 1.3rem; font-weight: bold;">{{ $document->title }}</div>
-                            <div style="color: #444;">Project: {{ $document->project_name }}</div>
-                            <div style="color: #444;">SOP: {{ $document->project->sop_number ?? 'N/A' }}</div>
-                            <div style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">SCAN TO VIEW DOCUMENT</div>
+                            <div style="font-size: 1.3rem; font-weight: bold;">{{ $project->name }}</div>
+                            <div style="color: #444;">SOP: {{ $project->sop_number }}</div>
+                            <div style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">SCAN TO VIEW DOCUMENTS</div>
                         </div>
                     </div>
 
                     <div class="qr-block">
                         <img
-                            src="{{ route('documents.qr', ['document' => $document->id, 'size' => 240]) }}"
-                            alt="QR {{ $document->slug }} plain"
+                            src="{{ route('projects.qr', ['project' => $project->id, 'size' => 240]) }}"
+                            alt="QR {{ $project->slug }} plain"
                             width="200"
                             height="200"
                         >

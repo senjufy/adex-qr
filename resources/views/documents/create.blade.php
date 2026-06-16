@@ -18,15 +18,16 @@
             </div>
 
             <div class="mb-2">
-                <label for="sop_number">SOP Number</label>
-                <input id="sop_number" name="sop_number" type="text" value="{{ old('sop_number') }}" required>
-                @error('sop_number')<div class="error">{{ $message }}</div>@enderror
-            </div>
-
-            <div class="mb-2">
-                <label for="project_name">Project Name</label>
-                <input id="project_name" name="project_name" type="text" value="{{ old('project_name') }}" required>
-                @error('project_name')<div class="error">{{ $message }}</div>@enderror
+                <label for="project_id">Project</label>
+                <select id="project_id" name="project_id" required>
+                    <option value="" disabled selected>Select a Project</option>
+                    @foreach($projects as $project)
+                        <option value="{{ $project->id }}" {{ old('project_id') == $project->id ? 'selected' : '' }}>
+                            {{ $project->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('project_id')<div class="error">{{ $message }}</div>@enderror
             </div>
 
             <div class="mb-2">

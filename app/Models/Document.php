@@ -10,9 +10,9 @@ class Document extends Model
     use HasFactory;
 
     protected $fillable = [
+        'project_id',
         'slug',
         'title',
-        'sop_number',
         'project_name',
         'description',
         'current_file_path',
@@ -20,8 +20,8 @@ class Document extends Model
         'current_file_size',
     ];
 
-    public function revisions()
+    public function project()
     {
-        return $this->hasMany(DocumentRevision::class);
+        return $this->belongsTo(Project::class);
     }
 }

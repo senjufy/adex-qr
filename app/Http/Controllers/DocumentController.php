@@ -14,16 +14,18 @@ class DocumentController extends Controller
 {
     public function index()
     {
-        $documents = Document::query()
-            ->latest()
-            ->paginate(15);
+        $projects = Project::query()
+            ->with(['documents'])
+            ->has('documents')
+            ->orderBy('name')
+            ->get();
 
-        return view('documents.index', compact('documents'));
+        return view('documents.index', compact('projects'));
     }
 
     public function create()
     {
-        $projects = Project::orderBy('name')->get();
+        $projects = Project::orderBy('sop_number')->get();
         return view('documents.create', compact('projects'));
     }
 
@@ -67,7 +69,7 @@ class DocumentController extends Controller
 
     public function edit(Document $document)
     {
-        $projects = Project::orderBy('name')->get();
+        $projects = Project::orderBy('sop_number')->get();
         return view('documents.edit', compact('document', 'projects'));
     }
 

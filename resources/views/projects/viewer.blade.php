@@ -66,8 +66,10 @@
 </head>
 <body>
     <header class="header">
-        <img src="{{ asset('navLogo.webp') }}" alt="QR Manager">
-        <div style="font-size: 0.875rem; color: #6b7280; font-weight: 500;">TECHNICAL DOCUMENTATION</div>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 1rem;">
+            <img src="{{ asset('navLogo.webp') }}" alt="QR Manager" style="margin-bottom: 0;">
+            <div style="font-size: 0.875rem; color: #6b7280; font-weight: 500;">TECHNICAL DOCUMENTATION</div>
+        </div>
     </header>
 
     <main class="container">

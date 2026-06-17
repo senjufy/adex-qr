@@ -95,6 +95,15 @@ This document is the source of truth for the app's behavior, data structure, and
 - Ensure the Project Viewer is responsive and optimized for mobile/tablet use in industrial environments.
 - Maintain existing revision logic to ensure file history is preserved.
 
+## Permanent Infrastructure (Immutable)
+
+### Permanent QR Routes
+The following URL structures are **PERMANENT**. Do not change these patterns, as they are encoded into physical hardware/labels:
+1. **Project Entry:** `/p/{slug}` (Resolves to Project Viewer)
+2. **Direct Document:** `/d/{slug}` (Resolves to PDF file)
+
+Changing these requires a domain-level redirect strategy to avoid breaking field labels.
+
 ## Security
 
 ### Simple Admin Gate

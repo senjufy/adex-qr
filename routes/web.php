@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| PERMANENT PUBLIC ROUTES (DO NOT CHANGE)
+| These routes are encoded into physical QR labels. Changing these 
+| will break existing labels in the field.
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

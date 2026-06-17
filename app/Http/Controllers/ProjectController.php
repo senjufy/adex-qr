@@ -11,7 +11,33 @@ class ProjectController extends Controller
 {
     public function dashboard()
     {
-        return view('dashboard');
+        $health = $this->checkSystemIntegrity();
+        return view('dashboard', compact('health'));
+    }
+
+    private function checkSystemIntegrity(): array
+    {
+        $routes = \Illuminate\Support\Facades\Route::getRoutes();
+        $checks = [
+            'project_route' => false,
+            'document_route' => false,
+        ];
+
+        foreach ($routes as $route) {
+            if ($route->getName() === 'project.show' && str_starts_with($route->uri(), 'p/')) {
+                $checks['project_route'] = true;
+            }
+            if ($route->getName() === 'scan.show' && str_starts_with($route->uri(), 'd/')) {
+                $checks['document_route'] = true;
+            }
+        }
+
+        $allOk = !in_array(false, $checks, true);
+
+        return [
+            'is_healthy' => $allOk,
+            'details' => $checks,
+        ];
     }
 
     public function index()

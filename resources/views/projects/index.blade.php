@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="{{ route('home') }}" class="btn-back">← Back to Dashboard</a>
     <div class="card">
         <div class="mb-2" style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
             <div>

@@ -53,7 +53,6 @@
                             height="200"
                         >
                         <div class="meta">
-                            <div style="font-size: 0.9rem; color: #888; font-weight: bold; margin-bottom: 0.5rem;">LOGO AREA</div>
                             <img src="{{ asset('navLogo.webp') }}" alt="Logo" style="height: 35px; width: auto; filter: grayscale(1);">
                         </div>
                     </div>

@@ -15,8 +15,8 @@
                     <img
                         src="{{ route('projects.qr', ['project' => $project->id, 'size' => 100]) }}"
                         alt="Project QR {{ $project->slug }}"
-                        width="50"
-                        height="50"
+                        width="80"
+                        height="80"
                         style="border: 1px solid #e5e7eb; border-radius: 4px;"
                     >
                     <div>

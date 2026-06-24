@@ -74,7 +74,7 @@
 
     <main class="container">
         <section class="project-info">
-            <span class="sop">SOP: {{ $project->sop_number }}</span>
+            <!-- <span class="sop">SOP: {{ $project->sop_number }}</span> -->
             <h1>{{ $project->name }}</h1>
             @if($project->description)
                 <p>{{ $project->description }}</p>

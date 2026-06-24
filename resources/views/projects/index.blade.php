@@ -44,7 +44,7 @@
                                 <a class="btn btn-secondary" href="{{ route('projects.edit', $project) }}">Edit</a>
                                 <a class="btn" href="{{ route('project.show', $project->slug) }}" target="_blank" rel="noopener">View Landing</a>
                                 <a class="btn btn-secondary" href="{{ route('projects.print.single', $project) }}" target="_blank" rel="noopener">Print QR</a>
-                                <button type="button" class="btn btn-danger" style="opacity: 0.5; filter: blur(1px); cursor: not-allowed;" title="Contact software department for project deletion">Delete</button>
+                                <button type="button" class="btn btn-danger" disabled title="Contact software department for project deletion">Delete</button>
                             </div>
                         </td>
                     </tr>

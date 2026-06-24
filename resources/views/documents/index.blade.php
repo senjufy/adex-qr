@@ -10,10 +10,19 @@
 
     @forelse ($projects as $project)
         <div class="card mb-2" style="border-left: 5px solid #2563eb;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 1rem; border-bottom: 1px solid #f3f4f6; padding-bottom: 0.5rem;">
-                <div>
-                    <h2 style="margin:0; color: #111827;">{{ $project->name }}</h2>
-                    <div class="muted">SOP: <strong>{{ $project->sop_number }}</strong></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem; border-bottom: 1px solid #f3f4f6; padding-bottom: 0.5rem;">
+                <div style="display:flex; align-items:center; gap: 1rem;">
+                    <img
+                        src="{{ route('projects.qr', ['project' => $project->id, 'size' => 100]) }}"
+                        alt="Project QR {{ $project->slug }}"
+                        width="50"
+                        height="50"
+                        style="border: 1px solid #e5e7eb; border-radius: 4px;"
+                    >
+                    <div>
+                        <h2 style="margin:0; color: #111827;">{{ $project->name }}</h2>
+                        <div class="muted">SOP: <strong>{{ $project->sop_number }}</strong></div>
+                    </div>
                 </div>
                 <a href="{{ route('projects.edit', $project) }}" class="btn btn-secondary" style="padding: .3rem .6rem; font-size: .8rem;">Edit Project</a>
             </div>
@@ -21,7 +30,6 @@
             <table style="margin-top: 0;">
                 <thead>
                     <tr>
-                        <th style="width: 100px;">QR</th>
                         <th>Title</th>
                         <th>File Info</th>
                         <th style="text-align: right;">Actions</th>
@@ -30,14 +38,6 @@
                 <tbody>
                     @foreach ($project->documents as $document)
                         <tr>
-                            <td>
-                                <img
-                                    src="{{ route('documents.qr', ['document' => $document->id, 'size' => 100]) }}"
-                                    alt="QR {{ $document->slug }}"
-                                    width="60"
-                                    height="60"
-                                >
-                            </td>
                             <td>
                                 <div style="font-weight: 600;">{{ $document->title }}</div>
                                 <div class="muted" style="font-size: .8rem;">Slug: {{ $document->slug }}</div>

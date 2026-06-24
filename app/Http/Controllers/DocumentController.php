@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class DocumentController extends Controller
 {
@@ -60,12 +59,6 @@ class DocumentController extends Controller
             ->with('status', 'Document created successfully.');
     }
 
-    public function printSingle(Document $document)
-    {
-        $documents = collect([$document]);
-
-        return view('documents.print', compact('documents'));
-    }
 
     public function edit(Document $document)
     {
@@ -95,19 +88,6 @@ class DocumentController extends Controller
             ->with('status', 'Document info updated.');
     }
 
-    public function qr(Document $document, Request $request)
-    {
-        $size = (int) $request->query('size', 240);
-        $size = max(120, min(1000, $size));
-
-        $svg = QrCode::format('svg')
-            ->errorCorrection('H')
-            ->size($size)
-            ->margin(1)
-            ->generate(route('scan.show', $document->slug));
-
-        return response($svg)->header('Content-Type', 'image/svg+xml');
-    }
 
     public function destroy(Document $document)
     {

@@ -57,10 +57,8 @@ Route::middleware(['admin.gate'])->group(function () {
         Route::get('/', [DocumentController::class, 'index'])->name('index');
         Route::get('/create', [DocumentController::class, 'create'])->name('create');
         Route::post('/', [DocumentController::class, 'store'])->name('store');
-        Route::get('/{document}/print', [DocumentController::class, 'printSingle'])->name('print.single');
         Route::get('/{document}/edit', [DocumentController::class, 'edit'])->name('edit');
         Route::put('/{document}', [DocumentController::class, 'update'])->name('update');
         Route::delete('/{document}', [DocumentController::class, 'destroy'])->name('destroy');
-        Route::get('/{document}/qr', [DocumentController::class, 'qr'])->name('qr');
     });
 });

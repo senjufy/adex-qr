@@ -133,11 +133,7 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
-        $project->delete();
-
-        return redirect()
-            ->route('projects.index')
-            ->with('status', 'Project deleted successfully.');
+        abort(403, 'Project deletion is disabled. Please contact the software department.');
     }
 
     private function generateUniqueSlug(string $name): string
